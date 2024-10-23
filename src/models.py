@@ -18,7 +18,7 @@ class User(Base):
     last_name = Column(String(250))
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
 
-    favorites = relationship("Favorite", back_populates="user")
+    favorites = relationship("Favorite", backref="user")
                              
 class Favorite(Base):
     __tablename__ = 'favorite'
@@ -30,8 +30,8 @@ class Favorite(Base):
     film_id = Column(Integer, ForeignKey('film.id'), nullable=True)
     vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=True)
     added_at = Column(DateTime, default=datetime.datetime.utcnow)
-    
-    user = relationship("User", back_populates="favorites")
+
+    user = relationship("User")
 
 class Planet(Base):
     __tablename__ = 'planet'
