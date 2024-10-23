@@ -24,10 +24,10 @@ class Favorite(Base):
     #Propiedades (ID por tipología)
     id = Column(Integer, primary_key=True, nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    planet_id = Column(Integer, ForeignKey('planet.id'), nullable=False)
-    character_id = Column(Integer, ForeignKey('character.id'), nullable=False)
-    film_id = Column(Integer, ForeignKey('film.id'), nullable=False)
-    vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=False)
+    planet_id = Column(Integer, ForeignKey('planet.id'), nullable=True)
+    character_id = Column(Integer, ForeignKey('character.id'), nullable=True)
+    film_id = Column(Integer, ForeignKey('film.id'), nullable=True)
+    vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=True)
     added_at = Column(DateTime, default=datetime.datetime.utcnow)
 
 
