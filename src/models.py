@@ -31,8 +31,6 @@ class Favorite(Base):
     vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=True)
     added_at = Column(DateTime, default=datetime.datetime.utcnow)
 
-    user = relationship("User")
-
 class Planet(Base):
     __tablename__ = 'planet'
     id = Column(Integer, primary_key=True, nullable=False)
