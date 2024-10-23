@@ -17,7 +17,7 @@ class User(Base):
     first_name = Column(String(250))
     last_name = Column(String(250))
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
-   
+    favorites = db.relationship('Favorite', backref='user')
 
 class Favorite(Base):
     __tablename__ = 'favorite'
@@ -29,11 +29,6 @@ class Favorite(Base):
     film_id = Column(Integer, ForeignKey('film.id'), nullable=False)
     vehicle_id = Column(Integer, ForeignKey('vehicle.id'), nullable=False)
     added_at = Column(DateTime, default=datetime.datetime.utcnow)
-  
-#Conexión bidireccional
-user = relationship("User", back_populates="favorite")
-User.favorite = relationship("Favorite", order_by=Favorite.id, back_populates="user")
-
 
 
 
