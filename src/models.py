@@ -82,10 +82,12 @@ class Film(Base):
     director = Column(String(250))
     release_date = Column(String(250))
     opening_crawl = Column(String(250))
-    characters =  Column(Integer, ForeignKey('character.id'))
-    vehicles =  Column(Integer, ForeignKey('vehicle.id'))
-    planets =  Column(Integer, ForeignKey('planet.id'))
-
+    character_id =  Column(Integer, ForeignKey('character.id'))
+    vehicle_id =  Column(Integer, ForeignKey('vehicle.id'))
+    planet_id =  Column(Integer, ForeignKey('planet.id'))
+    characters = relationship("Character")
+    vehicles = relationship("Vehicle")
+    planets = relationship("Planet")
     def to_dict(self):
         return {}
 
